@@ -1,0 +1,163 @@
+# Safety Framework Card - Google DeepMind Frontier Safety Framework v3.0
+# Verified May 2026. v3 (Sept 2025) added manipulation and shutdown risks.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Frontier Safety Framework"
+  publisher: "Google DeepMind"
+  version: "3.0"
+  effective_date: "2025-09-22"
+  supersedes: "2.0 (Feb 4, 2025)"
+  canonical_url: "https://deepmind.google/blog/strengthening-our-frontier-safety-framework/"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - CBRN_uplift
+    - biological_uplift
+    - chemical_uplift
+    - radiological_uplift
+    - nuclear_uplift
+    - cyber_offense
+    - AI_R_and_D_acceleration
+    - deceptive_alignment
+    - societal_manipulation
+  enumeration_type: closed
+  severity_definitions:
+    - level: "Critical Capability Level (CCL)"
+      definition: "Capability level at which, absent mitigation, a frontier AI model may pose heightened risk of severe harm."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "CCL-CBRN"
+      name: "CBRN CCL"
+      capability_definition: "Meaningful uplift to actors seeking to cause mass casualties via CBRN agents."
+      indicators:
+        - "CBRN uplift benchmarks"
+        - "expert elicitation"
+      triggered_mitigations:
+        - "heightened security"
+        - "deployment restrictions"
+    - tier_id: "CCL-Cyber"
+      name: "Cyber CCL"
+      capability_definition: "Autonomously discover and exploit critical vulnerabilities at scale."
+      indicators:
+        - "cyber benchmark performance"
+        - "red-team findings"
+      triggered_mitigations:
+        - "deployment restrictions"
+        - "access controls"
+    - tier_id: "CCL-ML-RD"
+      name: "Machine Learning R&D CCL"
+      capability_definition: "Autonomously accelerate ML research and development substantially."
+      indicators:
+        - "autonomous research benchmarks"
+        - "ML R&D acceleration evals"
+      triggered_mitigations:
+        - "security uplift"
+        - "deployment restrictions"
+    - tier_id: "CCL-Manipulation"
+      name: "Manipulation CCL (v3)"
+      capability_definition: "Manipulate beliefs or behavior at scale via interaction."
+      indicators:
+        - "persuasion benchmarks"
+        - "manipulation studies"
+      triggered_mitigations:
+        - "deployment safeguards"
+    - tier_id: "CCL-Shutdown"
+      name: "Shutdown resistance CCL (v3)"
+      capability_definition: "Risk that a model resists shutdown or undermines oversight."
+      indicators:
+        - "alignment evaluations"
+        - "deceptive alignment indicators"
+      triggered_mitigations:
+        - "alignment-focused mitigations"
+        - "deployment restrictions"
+  measurement_basis: absolute_capability
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - third_party
+    - government_AISI
+  named_third_parties:
+    - "UK AISI"
+    - "US AISI (NIST)"
+  eval_types:
+    - benchmark
+    - red_team
+    - expert_elicitation
+    - automated_eval
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: required
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: true
+
+d4_mitigation_commitments:
+  technical:
+    - rlhf
+    - safety_fine_tuning
+    - adversarial_training
+  access_controls:
+    - api_gating
+    - weight_protection
+  operational:
+    - agi_safety_council_review
+    - responsibility_and_safety_council_review
+    - google_trust_compliance_council_review
+    - deployment_review
+  halting_triggers:
+    - deployment_restriction_at_CCL
+    - access_limitations
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Frontier Safety team and Frontier Safety Council"
+    deployment_above_tier: "AGI Safety Council, Responsibility and Safety Council, or Google Trust and Compliance Council"
+    framework_revision: "DeepMind leadership; AGI Safety Council reviews periodically"
+  pre_commitment_vs_discretion: mixed
+  external_review:
+    capability_evals: required
+    framework_revisions: optional
+    named_external_reviewers:
+      - "UK AISI"
+      - "US AISI"
+  public_disclosure:
+    threshold_crossings: optional
+    mitigation_failures: optional
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: false
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: event_driven
+  ratchet_commitment: unspecified
+  public_diff_required: true
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm exact September 2025 v3 effective date."
+    - "Confirm whether public disclosure of CCL approach is required or optional."
+    - "Confirm v3 added manipulation and shutdown CCLs beyond v2."
+    - "Confirm Frontier Safety Council vs. AGI Safety Council distinctions."
+  card_authors:
+    - "K (verified May 2026)"

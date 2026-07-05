@@ -1,0 +1,89 @@
+# Safety Framework Card — blank template (spec v0.1)
+# Fill every required field. Recommended fields raise the completeness score.
+# Run:  python validator/safety_card.py lint <this_file>.yaml
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: ""           # required — official name
+  publisher: ""                # required — lab or org
+  version: ""                  # required — version string the publisher uses
+  effective_date: ""           # required — YYYY-MM-DD
+  supersedes: ""               # recommended — prior version
+  canonical_url: ""            # required — authoritative URL
+  contact: ""                  # recommended — email or page
+  license: "CC-BY-4.0"         # recommended — license for this card
+
+# D1 — Risk Ontology
+d1_risk_ontology:
+  scope_basis: ""              # required — capability_based | harm_based | hybrid
+  in_scope_harms: []           # required — see schema for controlled vocabulary
+  enumeration_type: ""         # required — open | closed
+  severity_definitions: []     # recommended
+
+# D2 — Capability Thresholds
+d2_capability_thresholds:
+  threshold_model: ""          # required — discrete_tiers | continuous_score | hybrid
+  tier_taxonomy: []            # required if threshold_model uses tiers
+  measurement_basis: ""        # required — uplift_relative | absolute_capability | hybrid
+  pre_or_post_mitigation: ""   # required — pre | post | both
+
+# D3 — Evaluation Methodology
+d3_evaluation_methodology:
+  eval_sources: []             # required — see vocabulary
+  named_third_parties: []      # recommended
+  eval_types: []               # required — see vocabulary
+  cadence:
+    pre_deployment: ""         # required — required | recommended | none
+    continuous: ""             # required — required | recommended | none
+    pre_training_decision: ""  # recommended
+  reproducibility:
+    methods_published: false   # required
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: false
+
+# D4 — Mitigation Commitments
+d4_mitigation_commitments:
+  technical: []                # recommended — list mitigations
+  access_controls: []          # recommended
+  operational: []              # recommended
+  halting_triggers: []         # recommended
+  reversibility:
+    mitigation_lift_protocol: ""   # defined | not_defined | n/a
+    rollback_capability: false
+
+# D5 — Governance Triggers
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: ""
+    deployment_above_tier: ""
+    framework_revision: ""
+  pre_commitment_vs_discretion: ""  # required — pre_committed | discretionary | mixed
+  external_review:
+    capability_evals: ""        # required — required | optional | none
+    framework_revisions: ""     # recommended
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: ""     # required — required | optional | none
+    mitigation_failures: ""
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: false
+    external_reporting_channel: false
+
+# D6 — Revision Protocol
+d6_revision_protocol:
+  cadence: ""                   # required — annual | semi_annual | event_driven | unspecified
+  ratchet_commitment: ""        # required — tightening_only | bidirectional | unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: ""  # never_sunset | periodic_review | on_revision
+    mitigation_specifics: ""
+
+# Notes (free-form)
+notes:
+  verification_status: "draft"  # draft | self_verified | publisher_verified | third_party_verified
+  open_questions: []
+  card_authors: []

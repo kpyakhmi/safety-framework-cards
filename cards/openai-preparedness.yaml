@@ -1,0 +1,153 @@
+# Safety Framework Card - OpenAI Preparedness Framework v2
+# Verified May 2026. v2 (April 2025) dropped persuasion; CBRN narrowed to Bio/Chem only.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Preparedness Framework"
+  publisher: "OpenAI"
+  version: "2.0"
+  effective_date: "2025-04-15"
+  supersedes: "Beta (December 2023)"
+  canonical_url: "https://openai.com/index/updating-our-preparedness-framework/"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - biological_uplift
+    - chemical_uplift
+    - cyber_offense
+    - AI_R_and_D_acceleration
+  enumeration_type: closed
+  severity_definitions:
+    - level: "Low"
+      definition: "Below threshold of concern on tracked categories."
+    - level: "Medium"
+      definition: "Meaningful uplift; deployable with standard safeguards."
+    - level: "High"
+      definition: "Substantial uplift; deployable only with strong safeguards and Safety Advisory Group review."
+    - level: "Critical"
+      definition: "Severe risk; deployment blocked without specific mitigations."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "Low"
+      capability_definition: "No significant uplift in any Tracked Category."
+      indicators:
+        - "below benchmark thresholds in all tracked categories"
+      triggered_mitigations:
+        - "standard deployment safeguards"
+    - tier_id: "Medium"
+      capability_definition: "Meaningful uplift in a tracked category but bounded."
+      indicators:
+        - "measured uplift on benchmark suites"
+      triggered_mitigations:
+        - "additional red-teaming"
+        - "deployment review"
+    - tier_id: "High"
+      capability_definition: "Substantial uplift; requires strong safeguards before deployment."
+      indicators:
+        - "substantial benchmark uplift"
+        - "expert elicitation"
+      triggered_mitigations:
+        - "Safety Advisory Group review"
+        - "enhanced safeguards required"
+    - tier_id: "Critical"
+      capability_definition: "Severe risk; not deployed without specific mitigations."
+      indicators:
+        - "catastrophic-level capabilities"
+      triggered_mitigations:
+        - "deployment block"
+        - "training pause considered"
+        - "leadership/board review"
+  measurement_basis: hybrid
+  pre_or_post_mitigation: both
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - third_party
+    - government_AISI
+    - external_red_team
+  named_third_parties:
+    - "US AISI (NIST)"
+    - "UK AISI"
+    - "Apollo Research"
+  eval_types:
+    - benchmark
+    - red_team
+    - expert_elicitation
+    - uplift_study
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: recommended
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: true
+
+d4_mitigation_commitments:
+  technical:
+    - rlhf
+    - safety_fine_tuning
+    - classifier_refusal
+    - adversarial_training
+  access_controls:
+    - api_gating
+    - usage_policies
+    - rate_limiting
+  operational:
+    - preparedness_team_review
+    - safety_advisory_group_review
+    - leadership_review
+  halting_triggers:
+    - deployment_block_at_critical
+    - mitigation_required_at_high
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Preparedness team and Safety Advisory Group"
+    deployment_above_tier: "Leadership; board has override authority"
+    framework_revision: "Leadership; framework updated event-driven"
+  pre_commitment_vs_discretion: mixed
+  external_review:
+    capability_evals: required
+    framework_revisions: optional
+    named_external_reviewers:
+      - "Safety Advisory Group"
+      - "US AISI"
+      - "UK AISI"
+  public_disclosure:
+    threshold_crossings: required
+    mitigation_failures: optional
+    timeline_to_disclose: "via system cards at model release"
+  whistleblower_protections:
+    policy_exists: true
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: event_driven
+  ratchet_commitment: bidirectional
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm whether external whistleblower reporting channel is public."
+    - "Confirm whether Apollo Research is currently engaged."
+    - "v1 to v2 included loosening (persuasion dropped); structural finding for paper."
+    - "Research Categories distinct from Tracked Categories - consider schema extension."
+  card_authors:
+    - "K (verified May 2026)"

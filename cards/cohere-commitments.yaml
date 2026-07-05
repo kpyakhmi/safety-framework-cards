@@ -1,0 +1,126 @@
+# Safety Framework Card - Cohere Secure AI Frontier Model Framework
+# Verified May 2026. Published Feb 2025. Distinctive emphasis on enterprise/domain
+# risks alongside catastrophic. Commits to sharing eval results and engaging
+# third parties.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Secure AI Frontier Model Framework"
+  publisher: "Cohere"
+  version: "1.0"
+  effective_date: "2025-02-01"
+  supersedes: ""
+  canonical_url: "https://cohere.com/security/the-cohere-secure-ai-frontier-model-framework-february-2025.pdf"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: hybrid
+  in_scope_harms:
+    - cyber_offense
+    - CBRN_uplift
+    - harmful_content_generation
+    - economic_disruption
+    - other
+  enumeration_type: open
+  severity_definitions:
+    - level: "High Risk"
+      definition: "Models triggering leading indicator assessment receive robust baseline security."
+    - level: "Critical Risk"
+      definition: "Most robust measures applied to models reaching this level."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "Leading-indicator (baseline)"
+      capability_definition: "Triggers baseline security protection."
+      indicators:
+        - "leading indicator assessment"
+      triggered_mitigations:
+        - "baseline security protection"
+    - tier_id: "High"
+      capability_definition: "Pre-mitigation scores in high range."
+      indicators:
+        - "pre-mitigation scoring"
+      triggered_mitigations:
+        - "scaled-up security safeguards"
+    - tier_id: "Critical"
+      capability_definition: "Pre-mitigation scores in critical range."
+      indicators:
+        - "pre-mitigation scoring"
+      triggered_mitigations:
+        - "most robust measures applied"
+  measurement_basis: hybrid
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - third_party
+    - external_red_team
+  named_third_parties: []
+  eval_types:
+    - benchmark
+    - red_team
+    - expert_elicitation
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: none
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: true
+
+d4_mitigation_commitments:
+  technical:
+    - safety_fine_tuning
+    - classifier_refusal
+  access_controls:
+    - enterprise_controls
+    - usage_policies
+  operational:
+    - deployment_review
+    - security_uplift
+  halting_triggers: []
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Internal governance"
+    deployment_above_tier: "Cohere leadership"
+    framework_revision: "Cohere leadership"
+  pre_commitment_vs_discretion: mixed
+  external_review:
+    capability_evals: optional
+    framework_revisions: optional
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: optional
+    mitigation_failures: optional
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: false
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: unspecified
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Cohere distinctively emphasizes enterprise/domain-specific risks alongside catastrophic risk."
+    - "Confirm named third-party evaluators."
+    - "Cohere is one of the labs explicitly committing to share eval results externally."
+  card_authors:
+    - "K (verified May 2026)"

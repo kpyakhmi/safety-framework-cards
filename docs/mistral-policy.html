@@ -1,0 +1,95 @@
+<!doctype html><html><head><meta charset='utf-8'><title>(no published frontier safety framework as of May 2026)</title><style>
+:root { --bg:#fafafa; --fg:#111; --muted:#666; --line:#ddd; --accent:#1f3a5f; --warn:#b54708; --good:#067647; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+       background: var(--bg); color: var(--fg); margin: 0; line-height: 1.55; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
+.header { border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 28px; }
+.header h1 { margin: 0 0 6px; font-size: 26px; color: var(--accent); }
+.header .meta { color: var(--muted); font-size: 14px; }
+.dim { margin-bottom: 28px; }
+.dim h2 { font-size: 17px; color: var(--accent); border-bottom: 1px solid var(--line);
+          padding-bottom: 6px; margin: 0 0 10px; }
+.row { display: grid; grid-template-columns: 220px 1fr; gap: 12px; padding: 6px 0;
+       border-bottom: 1px dotted #eee; font-size: 14px; }
+.row.k { color: var(--muted); }
+.tag { display: inline-block; padding: 2px 8px; margin: 2px 4px 2px 0; border-radius: 12px;
+       background: #eef2f6; color: var(--accent); font-size: 12px; }
+.tag.warn { background: #fff5e6; color: var(--warn); }
+.tag.good { background: #ecf7ef; color: var(--good); }
+.muted { color: var(--muted); font-style: italic; }
+.section-empty { color: var(--muted); font-style: italic; padding: 4px 0; }
+table.cmp { border-collapse: collapse; width: 100%; font-size: 13px; margin-top: 12px; }
+table.cmp th, table.cmp td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top;
+                              text-align: left; }
+table.cmp th { background: var(--accent); color: #fff; }
+table.cmp td.empty { color: var(--muted); font-style: italic; }
+.tier { border: 1px solid var(--line); padding: 10px 12px; margin: 6px 0; background: #fff; border-radius: 4px; }
+.tier .id { font-weight: 600; color: var(--accent); }
+.footer { color: var(--muted); font-size: 12px; margin-top: 60px; border-top: 1px solid var(--line);
+          padding-top: 14px; }
+.diff-add { background: #ecf7ef; }
+.diff-rem { background: #fbeaea; text-decoration: line-through; }
+.idx { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.idx .card { border: 1px solid var(--line); background: #fff; padding: 14px; border-radius: 4px; }
+.idx .card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.idx .card .score { color: var(--muted); font-size: 13px; margin-top: 4px; }
+</style></head><body><div class='wrap'><div class="header">
+<h1>(no published frontier safety framework as of May 2026)</h1>
+<div class="meta">Published by <strong>Mistral AI</strong> &middot; version <strong>n/a</strong> &middot; effective 1970-01-01
+ &middot; <a href="https://mistral.ai/">canonical</a>
+</div>
+</div>
+<div class="dim"><h2>D1. Risk Ontology</h2>
+<div class="row"><div class="k">scope_basis</div><div>capability_based</div></div>
+<div class="row"><div class="k">in_scope_harms</div><div><span class="tag">other</span></div></div>
+<div class="row"><div class="k">enumeration_type</div><div>open</div></div>
+</div>
+<div class="dim"><h2>D2. Capability Thresholds</h2>
+<div class="row"><div class="k">threshold_model</div><div>continuous_score</div></div>
+<div class="row"><div class="k">measurement_basis</div><div>hybrid</div></div>
+<div class="row"><div class="k">pre_or_post_mitigation</div><div>pre</div></div>
+<div class="row"><div class="k">tier_taxonomy</div><div><div class="section-empty">No tiers declared</div></div></div>
+</div>
+<div class="dim"><h2>D3. Evaluation Methodology</h2>
+<div class="row"><div class="k">eval_sources</div><div><span class="tag">internal</span></div></div>
+<div class="row"><div class="k">named_third_parties</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">eval_types</div><div><span class="tag">benchmark</span></div></div>
+<div class="row"><div class="k">cadence (pre-deployment)</div><div>none</div></div>
+<div class="row"><div class="k">cadence (continuous)</div><div>none</div></div>
+<div class="row"><div class="k">cadence (pre-training)</div><div>none</div></div>
+<div class="row"><div class="k">methods_published</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">benchmarks_published</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">eval_scripts_published</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">results_published</div><div><span class="tag warn">false</span></div></div>
+</div>
+<div class="dim"><h2>D4. Mitigation Commitments</h2>
+<div class="row"><div class="k">technical</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">access_controls</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">operational</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">halting_triggers</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">mitigation_lift_protocol</div><div>not_defined</div></div>
+<div class="row"><div class="k">rollback_capability</div><div><span class="tag warn">false</span></div></div>
+</div>
+<div class="dim"><h2>D5. Governance Triggers</h2>
+<div class="row"><div class="k">decision_body (threshold)</div><div><span class="muted">(unset)</span></div></div>
+<div class="row"><div class="k">decision_body (deployment)</div><div><span class="muted">(unset)</span></div></div>
+<div class="row"><div class="k">decision_body (revisions)</div><div><span class="muted">(unset)</span></div></div>
+<div class="row"><div class="k">pre_commitment_vs_discretion</div><div>discretionary</div></div>
+<div class="row"><div class="k">external_review (capability_evals)</div><div>none</div></div>
+<div class="row"><div class="k">external_review (revisions)</div><div>none</div></div>
+<div class="row"><div class="k">named_external_reviewers</div><div><span class="muted">(none)</span></div></div>
+<div class="row"><div class="k">disclosure (crossings)</div><div>none</div></div>
+<div class="row"><div class="k">disclosure (failures)</div><div>none</div></div>
+<div class="row"><div class="k">disclosure timeline</div><div><span class="muted">(unset)</span></div></div>
+<div class="row"><div class="k">whistleblower policy</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">external reporting channel</div><div><span class="tag warn">false</span></div></div>
+</div>
+<div class="dim"><h2>D6. Revision Protocol</h2>
+<div class="row"><div class="k">cadence</div><div>unspecified</div></div>
+<div class="row"><div class="k">ratchet_commitment</div><div>unspecified</div></div>
+<div class="row"><div class="k">public_diff_required</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">public_comment_period</div><div><span class="tag warn">false</span></div></div>
+<div class="row"><div class="k">sunset (capabilities)</div><div>on_revision</div></div>
+<div class="row"><div class="k">sunset (mitigations)</div><div>on_revision</div></div>
+</div><div class='footer'>Generated by safety-framework-cards renderer &middot; spec v0.1</div></div></body></html>

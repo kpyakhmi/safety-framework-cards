@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/REPLACE-WITH-YOUR-HANDLE/safety-framework-cards/blob/main/schema/safety_framework_card.schema.json",
+  "title": "Safety Framework Card",
+  "description": "Standardized specification for documenting a frontier AI lab's safety framework. Spec v0.1.",
+  "type": "object",
+  "required": ["schema_version", "metadata", "d1_risk_ontology", "d2_capability_thresholds", "d3_evaluation_methodology", "d5_governance_triggers", "d6_revision_protocol"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "Version of the Safety Framework Card spec this document conforms to."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["framework_name", "publisher", "version", "effective_date", "canonical_url"],
+      "properties": {
+        "framework_name": { "type": "string", "description": "Official name (e.g., 'Responsible Scaling Policy')." },
+        "publisher": { "type": "string", "description": "Lab or organization that publishes the framework." },
+        "version": { "type": "string", "description": "Version string used by the publisher." },
+        "effective_date": { "type": "string", "format": "date", "description": "YYYY-MM-DD when this version took effect." },
+        "supersedes": { "type": "string", "description": "Prior version this one replaces, if any." },
+        "canonical_url": { "type": "string", "format": "uri", "description": "Authoritative URL where the framework prose lives." },
+        "contact": { "type": "string", "description": "Contact email or page for the framework owner." },
+        "license": { "type": "string", "description": "License under which this card is published (e.g., CC-BY-4.0)." }
+      }
+    },
+    "d1_risk_ontology": {
+      "type": "object",
+      "description": "Which harms the framework names as in-scope and how it bounds them.",
+      "required": ["scope_basis", "in_scope_harms", "enumeration_type"],
+      "properties": {
+        "scope_basis": {
+          "type": "string",
+          "enum": ["capability_based", "harm_based", "hybrid"],
+          "description": "Does the framework trigger on capability levels, downstream harms, or both?"
+        },
+        "in_scope_harms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "CBRN_uplift", "biological_uplift", "chemical_uplift", "radiological_uplift", "nuclear_uplift",
+              "cyber_offense", "model_autonomy", "autonomous_replication",
+              "persuasion_at_scale", "power_seeking", "deceptive_alignment",
+              "AI_R_and_D_acceleration", "societal_manipulation", "economic_disruption",
+              "harmful_content_generation", "child_safety", "election_integrity", "other"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "enumeration_type": {
+          "type": "string",
+          "enum": ["open", "closed"],
+          "description": "open = harms list is non-exhaustive and may be extended; closed = enumerated harms are the complete set."
+        },
+        "severity_definitions": {
+          "type": "array",
+          "description": "Optional: named severity levels and what they mean.",
+          "items": {
+            "type": "object",
+            "required": ["level", "definition"],
+            "properties": {
+              "level": { "type": "string" },
+              "definition": { "type": "string" },
+              "examples": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "d2_capability_thresholds": {
+      "type": "object",
+      "description": "How the framework defines and operationalizes dangerous-capability levels.",
+      "required": ["threshold_model", "measurement_basis", "pre_or_post_mitigation"],
+      "properties": {
+        "threshold_model": {
+          "type": "string",
+          "enum": ["discrete_tiers", "continuous_score", "hybrid"]
+        },
+        "tier_taxonomy": {
+          "type": "array",
+          "description": "Required when threshold_model includes 'discrete_tiers' or 'hybrid'.",
+          "items": {
+            "type": "object",
+            "required": ["tier_id", "capability_definition"],
+            "properties": {
+              "tier_id": { "type": "string", "description": "Lab-specific identifier (e.g., 'ASL-3', 'CCL-3', 'High')." },
+              "name": { "type": "string" },
+              "capability_definition": { "type": "string" },
+              "indicators": { "type": "array", "items": { "type": "string" } },
+              "triggered_mitigations": { "type": "array", "items": { "type": "string" }, "description": "Cross-references entries in d4_mitigation_commitments." }
+            }
+          }
+        },
+        "measurement_basis": {
+          "type": "string",
+          "enum": ["uplift_relative", "absolute_capability", "hybrid"]
+        },
+        "pre_or_post_mitigation": {
+          "type": "string",
+          "enum": ["pre", "post", "both"],
+          "description": "Are thresholds compared against pre-mitigation model performance, post-mitigation, or both?"
+        }
+      }
+    },
+    "d3_evaluation_methodology": {
+      "type": "object",
+      "description": "What evidence is used to determine whether a threshold is met.",
+      "required": ["eval_sources", "eval_types", "cadence", "reproducibility"],
+      "properties": {
+        "eval_sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["internal", "third_party", "government_AISI", "academic", "external_red_team"]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "named_third_parties": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Specific external evaluators named (e.g., 'METR', 'Apollo Research', 'UK AISI')."
+        },
+        "eval_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["benchmark", "expert_elicitation", "red_team", "uplift_study", "model_organism", "automated_eval"]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "cadence": {
+          "type": "object",
+          "required": ["pre_deployment", "continuous"],
+          "properties": {
+            "pre_deployment": { "type": "string", "enum": ["required", "recommended", "none"] },
+            "continuous": { "type": "string", "enum": ["required", "recommended", "none"] },
+            "pre_training_decision": { "type": "string", "enum": ["required", "recommended", "none"] }
+          }
+        },
+        "reproducibility": {
+          "type": "object",
+          "required": ["methods_published"],
+          "properties": {
+            "methods_published": { "type": "boolean" },
+            "benchmarks_published": { "type": "boolean" },
+            "eval_scripts_published": { "type": "boolean" },
+            "results_published": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "d4_mitigation_commitments": {
+      "type": "object",
+      "description": "What responses are triggered when a threshold is approached or crossed.",
+      "properties": {
+        "technical": { "type": "array", "items": { "type": "string" }, "description": "e.g., rlhf, classifier_refusal, constitutional_ai, sae_steering, adversarial_training" },
+        "access_controls": { "type": "array", "items": { "type": "string" }, "description": "e.g., api_gating, kyc, rate_limiting, weight_protection_uplift" },
+        "operational": { "type": "array", "items": { "type": "string" }, "description": "e.g., security_uplift, insider_threat_program, deployment_review_board" },
+        "halting_triggers": { "type": "array", "items": { "type": "string" }, "description": "e.g., pause_training, deployment_block, model_recall, capability_decapacitation" },
+        "reversibility": {
+          "type": "object",
+          "properties": {
+            "mitigation_lift_protocol": { "type": "string", "enum": ["defined", "not_defined", "n/a"] },
+            "rollback_capability": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "d5_governance_triggers": {
+      "type": "object",
+      "description": "Who decides, under what process, with what accountability.",
+      "required": ["pre_commitment_vs_discretion", "external_review", "public_disclosure"],
+      "properties": {
+        "decision_body": {
+          "type": "object",
+          "properties": {
+            "threshold_assessment": { "type": "string" },
+            "deployment_above_tier": { "type": "string" },
+            "framework_revision": { "type": "string" }
+          }
+        },
+        "pre_commitment_vs_discretion": {
+          "type": "string",
+          "enum": ["pre_committed", "discretionary", "mixed"]
+        },
+        "external_review": {
+          "type": "object",
+          "required": ["capability_evals"],
+          "properties": {
+            "capability_evals": { "type": "string", "enum": ["required", "optional", "none"] },
+            "framework_revisions": { "type": "string", "enum": ["required", "optional", "none"] },
+            "named_external_reviewers": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "public_disclosure": {
+          "type": "object",
+          "required": ["threshold_crossings"],
+          "properties": {
+            "threshold_crossings": { "type": "string", "enum": ["required", "optional", "none"] },
+            "mitigation_failures": { "type": "string", "enum": ["required", "optional", "none"] },
+            "timeline_to_disclose": { "type": "string", "description": "Free-form, e.g., 'within 90 days', 'next system card'." }
+          }
+        },
+        "whistleblower_protections": {
+          "type": "object",
+          "properties": {
+            "policy_exists": { "type": "boolean" },
+            "external_reporting_channel": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "d6_revision_protocol": {
+      "type": "object",
+      "description": "How and when the framework itself changes.",
+      "required": ["cadence", "ratchet_commitment"],
+      "properties": {
+        "cadence": { "type": "string", "enum": ["annual", "semi_annual", "event_driven", "unspecified"] },
+        "ratchet_commitment": { "type": "string", "enum": ["tightening_only", "bidirectional", "unspecified"] },
+        "public_diff_required": { "type": "boolean" },
+        "public_comment_period": { "type": "boolean" },
+        "sunset_clauses": {
+          "type": "object",
+          "properties": {
+            "capability_definitions": { "type": "string", "enum": ["never_sunset", "periodic_review", "on_revision"] },
+            "mitigation_specifics": { "type": "string", "enum": ["never_sunset", "periodic_review", "on_revision"] }
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "object",
+      "description": "Free-form notes accompanying the card.",
+      "properties": {
+        "verification_status": { "type": "string", "enum": ["self_verified", "publisher_verified", "third_party_verified", "draft"] },
+        "open_questions": { "type": "array", "items": { "type": "string" } },
+        "card_authors": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

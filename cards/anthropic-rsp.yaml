@@ -1,0 +1,156 @@
+# Safety Framework Card - Anthropic Responsible Scaling Policy v3.1
+# Verified May 2026 against public sources.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Responsible Scaling Policy"
+  publisher: "Anthropic"
+  version: "3.1"
+  effective_date: "2026-04-02"
+  supersedes: "3.0 (Feb 24, 2026)"
+  canonical_url: "https://www.anthropic.com/responsible-scaling-policy"
+  contact: "responsible-scaling@anthropic.com"
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - CBRN_uplift
+    - biological_uplift
+    - chemical_uplift
+    - cyber_offense
+    - model_autonomy
+    - AI_R_and_D_acceleration
+  enumeration_type: open
+  severity_definitions:
+    - level: "Capability Threshold (Bio/Chem)"
+      definition: "Substantial uplift to actors seeking to cause mass casualties via biological or chemical agents."
+    - level: "Capability Threshold (Cyber)"
+      definition: "Capability to materially uplift sophisticated cyber operations."
+    - level: "Capability Threshold (AI R&D)"
+      definition: "Capability to autonomously accelerate frontier AI research and development."
+    - level: "ASL-3 Safeguards"
+      definition: "Group of technical and operational safeguards activated for models reaching capability thresholds. Activated May 2025."
+    - level: "ASL-4 Safeguards"
+      definition: "Group of safeguards for higher capability levels; definitions intentionally left to be developed as capabilities approach."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "Capability Threshold (Bio/Chem)"
+      name: "Bio/Chem capability threshold"
+      capability_definition: "Provides substantial uplift to actors seeking to cause mass casualties via biological or chemical weapons."
+      indicators:
+        - "uplift studies vs. baseline tools"
+        - "expert elicitation"
+      triggered_mitigations:
+        - "ASL-3 deployment safeguards"
+        - "ASL-3 security safeguards"
+    - tier_id: "Capability Threshold (Cyber)"
+      name: "Cyber capability threshold"
+      capability_definition: "Materially uplifts sophisticated cyber operations against hardened targets."
+      indicators:
+        - "cyber benchmark performance"
+        - "red-team findings"
+      triggered_mitigations:
+        - "ASL-3 deployment safeguards"
+        - "ASL-3 security safeguards"
+    - tier_id: "Capability Threshold (AI R&D)"
+      name: "AI R&D capability threshold"
+      capability_definition: "Capability to autonomously accelerate frontier AI research and development."
+      indicators:
+        - "autonomous research benchmarks"
+        - "R&D acceleration evals"
+      triggered_mitigations:
+        - "heightened safeguards (TBD as approached)"
+  measurement_basis: uplift_relative
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - third_party
+    - government_AISI
+    - external_red_team
+  named_third_parties:
+    - "METR"
+    - "Apollo Research"
+    - "UK AISI"
+    - "US AISI (NIST)"
+  eval_types:
+    - benchmark
+    - expert_elicitation
+    - red_team
+    - uplift_study
+  cadence:
+    pre_deployment: required
+    continuous: required
+    pre_training_decision: recommended
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: true
+
+d4_mitigation_commitments:
+  technical:
+    - rlhf
+    - constitutional_ai
+    - classifier_refusal
+    - harmlessness_training
+  access_controls:
+    - api_gating
+    - kyc_for_high_risk_use_cases
+    - rate_limiting
+    - weight_protection_ASL3
+  operational:
+    - asl3_security_uplift
+    - insider_threat_program
+    - deployment_review
+  halting_triggers:
+    - pause_deployment_at_threshold
+    - rollback_protocol
+    - additional_capability_restrictions
+  reversibility:
+    mitigation_lift_protocol: defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Responsible Scaling Officer + Frontier Red Team"
+    deployment_above_tier: "CEO with Long-Term Benefit Trust oversight"
+    framework_revision: "CEO and Responsible Scaling Officer; updates published with rationale"
+  pre_commitment_vs_discretion: pre_committed
+  external_review:
+    capability_evals: required
+    framework_revisions: optional
+    named_external_reviewers:
+      - "METR"
+      - "Apollo Research"
+      - "Long-Term Benefit Trust"
+  public_disclosure:
+    threshold_crossings: required
+    mitigation_failures: required
+    timeline_to_disclose: "Risk Reports every 3-6 months; Frontier Safety Roadmaps on update"
+  whistleblower_protections:
+    policy_exists: true
+    external_reporting_channel: true
+
+d6_revision_protocol:
+  cadence: event_driven
+  ratchet_commitment: tightening_only
+  public_diff_required: true
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm exact contact email."
+    - "Confirm v3.1 effective date precisely."
+    - "Confirm full list of currently engaged third-party evaluators."
+  card_authors:
+    - "K (verified against Anthropic v3.1 RSP, May 2026)"

@@ -1,0 +1,117 @@
+# Safety Framework Card - Amazon Frontier Model Safety Framework
+# Verified May 2026. Published February 9, 2025. Applied to Nova models.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Frontier Model Safety Framework"
+  publisher: "Amazon"
+  version: "2.7"
+  effective_date: "2025-02-09"
+  supersedes: ""
+  canonical_url: "https://assets.amazon.science/a7/7c/8bdade5c4eda9168f3dee6434fff/pc-amazon-frontier-model-safety-framework-2-7-final-2-9.pdf"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - CBRN_uplift
+    - cyber_offense
+    - model_autonomy
+  enumeration_type: closed
+  severity_definitions:
+    - level: "Critical Capability Threshold"
+      definition: "Capability level at which a frontier model exposes critical capabilities that could create severe risks."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "Below threshold"
+      capability_definition: "Model does not exceed critical capability thresholds; standard safeguards apply."
+      indicators:
+        - "uplift evaluations below thresholds"
+      triggered_mitigations:
+        - "standard deployment safeguards"
+    - tier_id: "Critical"
+      capability_definition: "Model exceeds critical capability thresholds without safeguards; not deployed."
+      indicators:
+        - "uplift evaluations exceed thresholds"
+        - "expert assessment"
+      triggered_mitigations:
+        - "enhanced controls required"
+        - "deployment restriction until safeguards in place"
+  measurement_basis: uplift_relative
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - external_red_team
+  named_third_parties: []
+  eval_types:
+    - benchmark
+    - red_team
+    - uplift_study
+    - expert_elicitation
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: none
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: true
+
+d4_mitigation_commitments:
+  technical:
+    - safety_fine_tuning
+    - classifier_refusal
+  access_controls:
+    - enterprise_access_controls
+    - usage_policies
+    - kyc_for_high_risk_use_cases
+  operational:
+    - deployment_review
+    - security_uplift
+  halting_triggers:
+    - deployment_restriction
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Internal Amazon Science review"
+    deployment_above_tier: "Amazon leadership"
+    framework_revision: "Amazon leadership"
+  pre_commitment_vs_discretion: discretionary
+  external_review:
+    capability_evals: optional
+    framework_revisions: optional
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: required
+    mitigation_failures: optional
+    timeline_to_disclose: "at model release via public capability evaluation reports"
+  whistleblower_protections:
+    policy_exists: true
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: unspecified
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm whether named third-party evaluators are engaged."
+    - "Amazon has published capability evaluation reports for Nova Premier and Nova 2.0 Lite."
+  card_authors:
+    - "K (verified May 2026)"

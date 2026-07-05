@@ -1,0 +1,90 @@
+# Safety Framework Card - Mistral AI
+# Verified May 2026. SIGNIFICANT FINDING: as of Dec 2025 (per METR review),
+# Mistral has NOT published its frontier safety framework despite Seoul commitment.
+# This card documents the non-publication as a structural finding.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "(no published frontier safety framework as of May 2026)"
+  publisher: "Mistral AI"
+  version: "n/a"
+  effective_date: "1970-01-01"
+  supersedes: ""
+  canonical_url: "https://mistral.ai/"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - other
+  enumeration_type: open
+  severity_definitions: []
+
+d2_capability_thresholds:
+  threshold_model: continuous_score
+  tier_taxonomy: []
+  measurement_basis: hybrid
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+  named_third_parties: []
+  eval_types:
+    - benchmark
+  cadence:
+    pre_deployment: none
+    continuous: none
+    pre_training_decision: none
+  reproducibility:
+    methods_published: false
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: false
+
+d4_mitigation_commitments:
+  technical: []
+  access_controls: []
+  operational: []
+  halting_triggers: []
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: false
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: ""
+    deployment_above_tier: ""
+    framework_revision: ""
+  pre_commitment_vs_discretion: discretionary
+  external_review:
+    capability_evals: none
+    framework_revisions: none
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: none
+    mitigation_failures: none
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: false
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: unspecified
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Mistral signed May 2024 Seoul commitments but has not published a formal safety framework as of Dec 2025 (per METR)."
+    - "Non-publication is itself a structural finding for the paper."
+    - "If Mistral publishes a framework before arXiv post, update this card."
+  card_authors:
+    - "K (verified May 2026)"

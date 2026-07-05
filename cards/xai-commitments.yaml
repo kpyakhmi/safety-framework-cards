@@ -1,0 +1,101 @@
+# Safety Framework Card - xAI Risk Management Framework
+# Verified May 2026. Draft Feb 20, 2025; final published Aug 20, 2025.
+# Two risk categories: malicious use, loss of control. Heavily benchmark-driven.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Risk Management Framework"
+  publisher: "xAI"
+  version: "1.0 (Aug 2025)"
+  effective_date: "2025-08-20"
+  supersedes: "Draft (Feb 20, 2025)"
+  canonical_url: "https://data.x.ai/2025-08-20-xai-risk-management-framework.pdf"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: hybrid
+  in_scope_harms:
+    - CBRN_uplift
+    - cyber_offense
+    - model_autonomy
+    - other
+  enumeration_type: open
+  severity_definitions:
+    - level: "Abuse potential"
+      definition: "Model behavior categories like vulnerability to jailbreaks."
+    - level: "Concerning propensities"
+      definition: "Tendencies such as propensity for user deception."
+    - level: "Dual-use capabilities"
+      definition: "Capabilities with both legitimate and harmful applications."
+
+d2_capability_thresholds:
+  threshold_model: continuous_score
+  tier_taxonomy: []
+  measurement_basis: hybrid
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+  named_third_parties: []
+  eval_types:
+    - benchmark
+    - red_team
+  cadence:
+    pre_deployment: recommended
+    continuous: none
+    pre_training_decision: none
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: false
+
+d4_mitigation_commitments:
+  technical:
+    - safety_fine_tuning
+  access_controls:
+    - usage_policies
+  operational: []
+  halting_triggers: []
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: false
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: ""
+    deployment_above_tier: ""
+    framework_revision: ""
+  pre_commitment_vs_discretion: discretionary
+  external_review:
+    capability_evals: optional
+    framework_revisions: none
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: optional
+    mitigation_failures: optional
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: false
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: unspecified
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "xAI missed self-imposed May 10 2025 deadline; final RMF published Aug 20 2025."
+    - "Framework received substantial public criticism from safety researchers."
+    - "Quantitative-benchmark-heavy approach contrasts with elicitation-heavy approaches at other labs."
+  card_authors:
+    - "K (verified May 2026)"

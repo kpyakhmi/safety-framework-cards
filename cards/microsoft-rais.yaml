@@ -1,0 +1,141 @@
+# Safety Framework Card - Microsoft Frontier Governance Framework
+# Verified May 2026. Published Feb 2025, derived from Seoul commitments.
+# Distinct from Microsoft's broader Responsible AI Standard.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Frontier Governance Framework"
+  publisher: "Microsoft"
+  version: "1.0"
+  effective_date: "2025-02-01"
+  supersedes: ""
+  canonical_url: "https://www.microsoft.com/en-us/ai/responsible-ai"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: capability_based
+  in_scope_harms:
+    - CBRN_uplift
+    - cyber_offense
+    - model_autonomy
+    - other
+  enumeration_type: open
+  severity_definitions:
+    - level: "Low"
+      definition: "Below thresholds of concern."
+    - level: "Medium"
+      definition: "Deployable with appropriate safeguards."
+    - level: "High"
+      definition: "Subject to further review and additional mitigations prior to deployment."
+    - level: "Critical"
+      definition: "Subject to further review and strong mitigations prior to deployment."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "Low"
+      capability_definition: "Below tracked capability thresholds."
+      indicators:
+        - "benchmark evaluations"
+      triggered_mitigations:
+        - "standard deployment"
+    - tier_id: "Medium"
+      capability_definition: "Meaningful capability in tracked categories."
+      indicators:
+        - "evaluation results"
+      triggered_mitigations:
+        - "appropriate safeguards before deployment"
+    - tier_id: "High"
+      capability_definition: "Substantial capability in tracked high-risk areas."
+      indicators:
+        - "evaluation results"
+        - "expert elicitation"
+      triggered_mitigations:
+        - "further review"
+        - "safety and security mitigations"
+    - tier_id: "Critical"
+      capability_definition: "Highest tier; substantial risk requiring strong mitigations."
+      indicators:
+        - "evaluation results"
+        - "red-team findings"
+      triggered_mitigations:
+        - "strong mitigations required"
+        - "deployment review"
+  measurement_basis: hybrid
+  pre_or_post_mitigation: pre
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - third_party
+    - external_red_team
+  named_third_parties: []
+  eval_types:
+    - benchmark
+    - red_team
+    - expert_elicitation
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: none
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: false
+
+d4_mitigation_commitments:
+  technical:
+    - safety_fine_tuning
+    - classifier_refusal
+    - prompt_shields
+  access_controls:
+    - azure_content_filter
+    - usage_policies
+    - enterprise_controls
+  operational:
+    - office_of_responsible_ai_review
+    - deployment_review
+  halting_triggers:
+    - deployment_restriction_at_high_or_critical
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: true
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Office of Responsible AI / Frontier Governance team"
+    deployment_above_tier: "Microsoft leadership"
+    framework_revision: "Microsoft leadership"
+  pre_commitment_vs_discretion: discretionary
+  external_review:
+    capability_evals: optional
+    framework_revisions: optional
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: optional
+    mitigation_failures: optional
+    timeline_to_disclose: "annual Responsible AI Transparency Report"
+  whistleblower_protections:
+    policy_exists: true
+    external_reporting_channel: true
+
+d6_revision_protocol:
+  cadence: event_driven
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm canonical URL specific to the Frontier Governance Framework."
+    - "Confirm precise Feb 2025 publication date."
+    - "Frontier Governance Framework is distinct from the broader RAI Standard."
+  card_authors:
+    - "K (verified May 2026)"

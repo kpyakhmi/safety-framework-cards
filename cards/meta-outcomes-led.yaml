@@ -1,0 +1,125 @@
+# Safety Framework Card - Meta Frontier AI Framework
+# Verified May 2026. Outcomes-led approach. Two risk tiers: High Risk, Critical Risk.
+# Critical Risk triggers immediate cessation. In-scope: Cybersecurity, Chemical and
+# Biological, and Loss of Control.
+
+schema_version: "0.1"
+
+metadata:
+  framework_name: "Frontier AI Framework"
+  publisher: "Meta"
+  version: "1.0"
+  effective_date: "2025-02-03"
+  supersedes: ""
+  canonical_url: "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"
+  contact: ""
+  license: "CC-BY-4.0"
+
+d1_risk_ontology:
+  scope_basis: harm_based
+  in_scope_harms:
+    - cyber_offense
+    - chemical_uplift
+    - biological_uplift
+    - model_autonomy
+  enumeration_type: closed
+  severity_definitions:
+    - level: "High Risk"
+      definition: "Model could meaningfully enable a harmful outcome but does not cross the catastrophic threshold."
+    - level: "Critical Risk"
+      definition: "Model could lead to a catastrophic outcome that cannot be sufficiently mitigated. Triggers immediate cessation of work."
+
+d2_capability_thresholds:
+  threshold_model: discrete_tiers
+  tier_taxonomy:
+    - tier_id: "High Risk"
+      capability_definition: "Model meaningfully enables harmful outcomes but does not cross critical threshold."
+      indicators:
+        - "threat model analysis"
+        - "uplift studies"
+      triggered_mitigations:
+        - "safety mitigations applied"
+        - "controlled release"
+        - "monitoring"
+    - tier_id: "Critical Risk"
+      capability_definition: "Model would substantially enable a catastrophic outcome."
+      indicators:
+        - "threat-model-based assessment"
+        - "outcome simulation"
+        - "expert elicitation"
+      triggered_mitigations:
+        - "immediate cessation of work on the model"
+        - "model not released"
+  measurement_basis: hybrid
+  pre_or_post_mitigation: post
+
+d3_evaluation_methodology:
+  eval_sources:
+    - internal
+    - external_red_team
+  named_third_parties: []
+  eval_types:
+    - red_team
+    - expert_elicitation
+    - benchmark
+  cadence:
+    pre_deployment: required
+    continuous: recommended
+    pre_training_decision: none
+  reproducibility:
+    methods_published: true
+    benchmarks_published: false
+    eval_scripts_published: false
+    results_published: false
+
+d4_mitigation_commitments:
+  technical:
+    - safety_fine_tuning
+    - classifier_refusal
+  access_controls:
+    - controlled_release
+    - usage_policies
+  operational:
+    - deployment_review
+  halting_triggers:
+    - model_not_released_at_critical
+    - cease_work_at_critical
+  reversibility:
+    mitigation_lift_protocol: not_defined
+    rollback_capability: false
+
+d5_governance_triggers:
+  decision_body:
+    threshold_assessment: "Internal review process"
+    deployment_above_tier: "Meta leadership"
+    framework_revision: "Meta leadership"
+  pre_commitment_vs_discretion: discretionary
+  external_review:
+    capability_evals: optional
+    framework_revisions: optional
+    named_external_reviewers: []
+  public_disclosure:
+    threshold_crossings: optional
+    mitigation_failures: optional
+    timeline_to_disclose: ""
+  whistleblower_protections:
+    policy_exists: true
+    external_reporting_channel: false
+
+d6_revision_protocol:
+  cadence: unspecified
+  ratchet_commitment: unspecified
+  public_diff_required: false
+  public_comment_period: false
+  sunset_clauses:
+    capability_definitions: on_revision
+    mitigation_specifics: on_revision
+
+notes:
+  verification_status: self_verified
+  open_questions:
+    - "Confirm Meta exact framework name and canonical URL."
+    - "Meta has acknowledged it may not be able to block all catastrophic AI models - gap between commitment and capability."
+    - "Outcomes-led vs. capability-based is the defining structural divergence in the corpus."
+  card_authors:
+    - "K (verified May 2026)"
