@@ -9,17 +9,6 @@ Frontier AI labs publish public safety frameworks (Anthropic's RSP, OpenAI's Pre
 
 This is an *additive* artifact — it does not replace the framework. A lab maps its existing framework into the schema in roughly thirty minutes. The card is then validated, rendered to HTML, and diffed across versions.
 
-# Safety Framework Cards
-
-A standardized specification for documenting frontier AI safety commitments.
-
-[![Spec version](https://img.shields.io/badge/spec-v0.1-blue)](schema/safety_framework_card.schema.json)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-
-Frontier AI labs publish public safety frameworks (Anthropic's RSP, OpenAI's Preparedness Framework, Google DeepMind's FSF, Meta's Outcomes-Led Framework, and others). Each framework is published as prose in idiosyncratic structure. **A Safety Framework Card is a machine-readable companion** that documents a framework's structural commitments along six dimensions, so regulators, partners, and researchers can compare frameworks systematically.
-
-This is an *additive* artifact — it does not replace the framework. A lab maps its existing framework into the schema in roughly thirty minutes. The card is then validated, rendered to HTML, and diffed across versions.
-
 [Paper (PDF)](paper/paper.md) · [Live Cards](https://kpyakhmi.github.io/safety-framework-cards/) · [Quick Start](#quick-start) · License: MIT
 
 ---
