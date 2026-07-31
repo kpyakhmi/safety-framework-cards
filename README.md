@@ -9,6 +9,39 @@ Frontier AI labs publish public safety frameworks (Anthropic's RSP, OpenAI's Pre
 
 This is an *additive* artifact — it does not replace the framework. A lab maps its existing framework into the schema in roughly thirty minutes. The card is then validated, rendered to HTML, and diffed across versions.
 
+# Safety Framework Cards
+
+A standardized specification for documenting frontier AI safety commitments.
+
+[![Spec version](https://img.shields.io/badge/spec-v0.1-blue)](schema/safety_framework_card.schema.json)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+Frontier AI labs publish public safety frameworks (Anthropic's RSP, OpenAI's Preparedness Framework, Google DeepMind's FSF, Meta's Outcomes-Led Framework, and others). Each framework is published as prose in idiosyncratic structure. **A Safety Framework Card is a machine-readable companion** that documents a framework's structural commitments along six dimensions, so regulators, partners, and researchers can compare frameworks systematically.
+
+This is an *additive* artifact — it does not replace the framework. A lab maps its existing framework into the schema in roughly thirty minutes. The card is then validated, rendered to HTML, and diffed across versions.
+
+[Paper (PDF)](paper/paper.md) · [Live Cards](https://kpyakhmi.github.io/safety-framework-cards/) · [Quick Start](#quick-start) · License: MIT
+
+---
+
+## Live Demo
+
+Rendered cards and side-by-side comparison view: **https://kpyakhmi.github.io/safety-framework-cards/**
+
+| Lab | Framework | Version |
+|---|---|---|
+| Anthropic | Responsible Scaling Policy | v3.1 |
+| OpenAI | Preparedness Framework | v2.0 |
+| Google DeepMind | Frontier Safety Framework | v3.0 |
+| Amazon | Frontier Model Safety Framework | v2.7 |
+| Microsoft | Frontier Governance Framework | v1.0 |
+| Meta | Frontier AI Framework (Outcomes-Led) | v1.0 |
+| Cohere | Secure AI Frontier Model Framework | v1.0 |
+| xAI | Risk Management Framework | v1.0 |
+| Mistral | *(no published framework)* | n/a |
+
+[→ Side-by-side comparison](https://kpyakhmi.github.io/safety-framework-cards/compare.html)
+
 ---
 
 ## What's in this repo
